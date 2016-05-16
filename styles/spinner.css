@@ -52,3 +52,76 @@
 .clickable {
   cursor: pointer;
 }
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+
+@media only screen and (max-width: 768px) {
+  #searchMe {
+    display: block;
+    margin: 10px auto;
+  }
+
+  #commentMe {
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #user {
+    display: inline;
+    margin-top: 10px;
+  }
+}
+
+@media only screen and  (min-width: 680px) and (max-width: 780px) {
+  #user {
+    display: inline;
+    margin-left: 250px;
+  }
+}
+
+@media only screen and  (min-width: 580px) and (max-width: 680px) {
+  #user {
+    display: inline;
+    margin-left: 175px;
+  }
+}
+
+@media only screen and  (min-width: 480px) and (max-width: 580px) {
+  #user {
+    display: inline;
+    margin-left: 150px;
+  }
+}
+
+@media only screen and  (min-width: 480px) and (max-width: 1400px) {
+  #searchMe {
+    display: block;
+    margin: 0px auto;
+  }
+}
+
+
