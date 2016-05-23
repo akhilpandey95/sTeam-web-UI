@@ -34,7 +34,18 @@ angular.module('steam')
     }
   }])
 
-  .controller('commentsCtrl', ['$scope', function ($scope) {}])
+  .controller('commentsCtrl', ['$scope', function ($scope) {
+    $scope.comment = [];
+    $scope.addComment = function () {
+      if($scope.commentContent != "") {
+        $scope.comment.push($scope.commentContent);
+        $scope.commentContent = "";
+      }
+    }
+    $scope.removeComment = function ($index) {
+      $scope.comment.splice($index, 1);
+    }
+  }])
 
   .directive('fileModel', ['$parse', function ($parse) {
     return {
