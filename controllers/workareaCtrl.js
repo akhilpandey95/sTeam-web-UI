@@ -103,23 +103,6 @@ angular.module('steam')
       }
   }])
 
-  .controller('documentCtrl', ['$scope', 'PDFViewerService', function ($scope, pdf) {
-    $scope.instance = pdf.Instance("viewer");
-    $scope.prevPage = function () {
-      $scope.instance.prevPage();
-    }
-    $scope.nextPage = function () {
-      $scope.instance.nextPage();
-    }
-    $scope.gotoPage = function (page) {
-      $scope.intance.gotoPage(page);
-    }
-    $scope.pageLoaded = function (currentPage, totalPages) {
-      $scope.currentPage = currentPage;
-      $scope.totalPages = totalPages;
-    }
-  }])
-
   .controller('createRoomCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');

@@ -1,5 +1,11 @@
 angular.module('steam')
 
+  .config(function ($provide) {
+    $provide.decorator('editorOptions', ['$delegate', function (editorOptions) {
+      return editorOptions;
+    }])
+  })
+
   .controller('workspaceListCtrl', ['$rootScope', '$scope', 'handler', 'localStorageService',
     function ($rootScope, $scope, handler, localStorageService) {
     $scope.invokeObj = function (itemClass, itemPath, itemMimeType) {
@@ -73,3 +79,20 @@ angular.module('steam')
     $scope.loadProgress = function(loaded, total, state) {
     }
   }])
+
+  .controller('workSpaceEditorCtrl', ['$scope', 'handler', 'localStorageService', 'textAngularManager', '$document',
+   function ($scope, handler, localStorageService, textAngularManager, $document) {
+    $scope.data = {
+      empty: '<small>Please enter text</small>',
+      full: ''
+    }
+    $scope.editable = true;
+
+    $scope.submit = function () {
+      console.log("The document has been submitted");
+    }
+    $scope.clear = function () {
+      console.log("The document has been reset");
+    }
+  }])
+
