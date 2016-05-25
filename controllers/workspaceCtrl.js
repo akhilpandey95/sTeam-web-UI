@@ -97,6 +97,7 @@ angular.module('steam')
       full: ''
     }
     $scope.editable = true;
+    $scope.content = $scope.data.empty;
 
     $scope.submit = function () {
       console.log("The document has been submitted");
