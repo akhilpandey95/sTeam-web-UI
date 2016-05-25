@@ -72,6 +72,10 @@ angular.module('steam',
             templateUrl: '/views/workspaceDetailed.html',
             controller: 'workspaceDetailedCtrl'
           },
+          'editor': {
+            templateUrl: '/views/editor.html',
+            controller: 'workSpaceEditorCtrl'
+          },
           'comments': {
             templateUrl: '/views/comments.html',
             controller: 'commentsCtrl'
