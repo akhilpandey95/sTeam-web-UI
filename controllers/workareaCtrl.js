@@ -47,45 +47,6 @@ angular.module('steam')
     }
   }])
 
-  .directive('fileModel', ['$parse', function ($parse) {
-    return {
-      restrict: 'A',
-      link: function(scope, element, attrs) {
-        var model = $parse(attrs.fileModel);
-        var modelSetter = model.assign;
-
-        element.bind('change', function(){
-          scope.$apply(function(){
-            modelSetter(scope, element[0].files[0]);
-          });
-        });
-      }
-    }
-  }])
-
-  .service('fileUpload', ['$rootScope', '$http', function ($rootScope, $http) {
-    this.uploadFileToUrl = function(file, uploadUrl){
-      var fd = new FormData();
-      $rootScope.loading = true;
-      $rootScope.uploadComplete = false;
-      fd.append('file', file);
-      $http.post(uploadUrl, fd, {
-        transformRequest: angular.identity,
-        headers: {'Content-Type': undefined}
-      })
-      .success(function (){
-        $rootScope.loading = false;
-        $rootScope.uploadComplete = true;
-        console.log("it is done");
-      })
-      .error(function (){
-        console.log(status);
-        $rootScope.loading = false;
-        $rootScope.uploadComplete = false;
-      });
-    }
-  }])
-
   .controller('createDocCtrl', ['$scope', '$location', '$modalInstance', 'fileUpload',
     function ($scope, $location, $modalInstance, fileUpload) {
       $scope.uploadFile = function (){
