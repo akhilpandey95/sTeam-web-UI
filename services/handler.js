@@ -4,6 +4,7 @@ angular.module('steam')
     function ($http, localStorageService, config, $state, $rootScope) {
       localStorageService.set('baseurl', config.baseurl)
       localStorageService.set('restapi', (config.baseurl + 'scripts/rest.pike?request='))
+      localStorageService.set('fileapi', (config.baseurl + 'scripts/rest.pike?request='))
       var handleRequest = function (response) {
         localStorageService.set('user', JSON.stringify(response.data.me))
         $rootScope.user = response.data.me.id
@@ -108,6 +109,22 @@ angular.module('steam')
 
         delete: function (request) {
           return $http.delete(localStorageService.get('restapi') + '/home' + request, headers()).then(handleRequest)
+        },
+
+        fget: function (request, data) {
+          return $http.get(localStorageService.get('fileapi') + request, headers()).then(handleRequest)
+        },
+
+        fpost: function (request, data) {
+          return $http.post(localStorageService.get('fileapi') + request, data, headers()).then(handleRequest)
+        },
+
+        fput: function (request, data) {
+          return $http.put(localStorageService.get('fileapi') + request, data, headers()).then(handleRequest)
+        },
+
+        fdelete: function (request) {
+          return $http.delete(localStorageService.get('fileapi') + '/home' + request, headers()).then(handleRequest)
         }
       }
     }])
