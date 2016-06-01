@@ -19,6 +19,16 @@ angular.module('steam')
         return logindata && user && user.id && user.id !== 'guest'
       }
 
+      var fileapiOptions = [
+        "read",
+        "write",
+        "execute",
+        "move",
+        "insert",
+        "annotate",
+        "sanction"
+      ]
+
       var breadcrumbFunc = function () {
         var locationRef = location.href
         var locationArray = locationRef.split('/')
