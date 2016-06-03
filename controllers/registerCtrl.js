@@ -4,7 +4,8 @@ angular.module('steam')
     function ($rootScope, $scope, handler, $state, localStorageService) {
     $scope.signUp = function () {
       $rootScope.loading = true
-      handler.signup($scope.signUpUsername, $scope.signUpPasswd, $scope.signUpEmailid).then(function (response) {
+      $scope.steamGrp = "techgrind"
+      handler.signup($scope.signUpEmailid, $scope.signUpPasswd, $scope.signUpPasswd2, $scope.steamGrp).then(function (response) {
         $state.go('workarea.list')
       })
     }

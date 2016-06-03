@@ -5,6 +5,7 @@ angular.module('steam')
       localStorageService.set('baseurl', config.baseurl)
       localStorageService.set('restapi', (config.baseurl + 'scripts/rest.pike?request='))
       localStorageService.set('fileapi', (config.baseurl + 'scripts/rest.pike?request='))
+
       var handleRequest = function (response) {
         localStorageService.set('user', JSON.stringify(response.data.me))
         $rootScope.user = response.data.me.id
@@ -67,6 +68,16 @@ angular.module('steam')
             })
           }
         },
+
+        signup: function (userid, password, emailid) {
+          return $http.post(localStorageService.get('restapi') + 'register', headers(true))
+          .then(handleRequest)
+          .catch( function () {
+            $rootScope.loading = false;
+            $rootScope.authStatus = false;
+            console.log("You have been registered")
+          })
+        }
 
         loginp: loginp,
         breadcrumbFunc: breadcrumbFunc,

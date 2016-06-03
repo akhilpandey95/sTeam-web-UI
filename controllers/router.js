@@ -17,6 +17,13 @@ angular.module('steam',
       requireLogin: false
     })
 
+      .state('register', {
+        url: '/register',
+        templateUrl: '/templates/login.html',
+        controller: 'registerCtrl',
+        requireLogin: false
+      })
+
       .state('workarea', {
         url: '/',
         requireLogin: true,
