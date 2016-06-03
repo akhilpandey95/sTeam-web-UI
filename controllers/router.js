@@ -8,8 +8,25 @@ angular.module('steam',
     'ngSanitize'
   ])
 
-  .config(['$locationProvider', '$stateProvider', '$urlRouterProvider',
-    function ($locationProvider, $stateProvider, $urlRouterProvider) {
+  .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$provide',
+    function ($locationProvider, $stateProvider, $urlRouterProvider, $provide) {
+
+    /*
+    $provide.decorator('editorOptions', ['$delegate', function ($delegate, editorOptions) {
+      editorOptions.bold.iconclass = "fa fa bold";
+      editorOptions.italics.iconclass = "fa fa italic";
+      editorOptions.underline.iconclass = "fa fa underline";
+      editorOptions.ul.iconclass = "fa fa list";
+      editorOptions.ol.iconclass = "fa fa list-ol";
+      editorOptions.undo.iconclass = "fa fa undo";
+      editorOptions.redo.iconclass = "fa fa repeat";
+      editorOptions.justifyLeft.iconclass = "fa fa-align-left";
+      editorOptions.justifyCenter.iconclass = "fa fa-align-justify";
+      editorOptions.justifyRight.iconclass = "fa fa-align-right";
+      return $delegate;
+    }])
+    */
+
     $stateProvider.state('login', {
       url: '/login',
       templateUrl: '/templates/login.html',

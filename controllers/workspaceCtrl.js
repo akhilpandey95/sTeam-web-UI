@@ -1,21 +1,5 @@
 angular.module('steam')
 
-  .config(function ($provide) {
-    $provide.decorator('editorOptions', ['$delegate', function (editorOptions) {
-      editorOptions.bold.iconclass = "fa fa bold";
-      editorOptions.italics.iconclass = "fa fa italic";
-      editorOptions.underline.iconclass = "fa fa underline";
-      editorOptions.ul.iconclass = "fa fa list";
-      editorOptions.ol.iconclass = "fa fa list-ol";
-      editorOptions.undo.iconclass = "fa fa undo";
-      editorOptions.redo.iconclass = "fa fa repeat";
-      editorOptions.justifyLeft.iconclass = "fa fa-align-left";
-      editorOptions.justifyCenter.iconclass = "fa fa-align-justify";
-      editorOptions.justifyRight.iconclass = "fa fa-align-right";
-      return editorOptions;
-    }])
-  })
-
   .controller('workspaceListCtrl', ['$rootScope', '$scope', 'handler', 'localStorageService',
     function ($rootScope, $scope, handler, localStorageService) {
     $scope.invokeObj = function (itemClass, itemPath, itemMimeType) {

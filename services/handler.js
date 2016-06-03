@@ -77,7 +77,7 @@ angular.module('steam')
             $rootScope.authStatus = false;
             console.log("You have been registered")
           })
-        }
+        },
 
         loginp: loginp,
         breadcrumbFunc: breadcrumbFunc,
