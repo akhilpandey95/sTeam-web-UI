@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="steam">
+<head>
+  <title>
+    sTeam Collaboration platform
+  </title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+
+  <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../styles/custom.css">
+
+</head>
+<body>
+
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">sTeam Web Interface</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">{{user}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="download">
+            <li><a href="#">Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="alert alert-success">
+      <h4>Welcome !</h4>
+        <p>To the web interface</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-4">
+        <div class="list-group table-of-contents">
+          <a class="list-group-item" href="#">Opt1</a>
+          <a class="list-group-item" href="#">Opt2</a>
+          <a class="list-group-item" href="#">Opt3</a>
+          <a class="list-group-item" href="#">Opt4</a>
+          <a class="list-group-item" href="#">Opt5</a>
+          <a class="list-group-item" href="#">Opt6</a>
+          <a class="list-group-item" href="#">Opt7</a>
+          <a class="list-group-item" href="#">Opt8</a>
+          <a class="list-group-item" href="#">Opt9</a>
+          <a class="list-group-item" href="#">Opt10</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
