@@ -43,6 +43,41 @@ input[readonly] {
   display: block;
 }
 
+.text-red {
+  color:#E52A3A;
+}
+
+.text-gray {
+  color:#5f5f5f;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* text angular Editor*/
+
+.ta-toolbar {
+  background-color: #000;
+  padding: 10px 10px 5px;
+  margin-left: 0px; /* Override bootstrap */
+  border: 1px solid #EEE;
+}
+
+.ta-toolbar .btn-group {
+  margin-bottom: 5px;
+}
+
+.ta-editor, .white-box {
+  padding: 10px;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+}
+
+textarea.ta-bind {
+  width: 90%;
+}
+
 /* Pseudo classes */
 
 /* :not(:required) hides this rule from IE9 and below */
