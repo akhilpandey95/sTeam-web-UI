@@ -12,9 +12,33 @@
 
 /* Elements */
 
+body {
+    padding-top: 50px
+}
+
+body>.navbar {
+    -webkit-transition: background-color .3s ease-in;
+    transition: background-color .3s ease-in
+}
+
 input[readonly] {
   background-color: white !important;
   cursor: text !important;
+}
+
+footer {
+    margin: 5em 0
+}
+
+footer li {
+    float: left;
+    margin-right: 1.5em;
+    margin-bottom: 1.5em
+}
+
+footer p {
+    clear: left;
+    margin-bottom: 0
 }
 
 /* ID's and classes */
@@ -53,6 +77,59 @@ input[readonly] {
 
 .text-center {
   text-align: center;
+}
+
+.roomItem{
+  display: inline-block;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  height: 40px;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+  margin-bottom: 10px;
+}
+
+.roomItem:hover{
+    cursor: pointer;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.4);
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
+}
+
+.roomItem > .roomItemIcon{
+  background: #337ab7;
+  width: 33px;
+  float: left;
+  color: #fff!important;
+  height: 100%;
+  text-align: center;
+}
+
+.roomItem > .roomItemIcon > .fa{
+  position:relative;
+  top: calc(50% - 9px)!important; /* 50% - 3/4 of icon height */
+}
+.roomItem > .roomItemIcon.roomItemGreen{
+  background: #5cb85c!important;
+}
+
+.roomItem > .roomItemIcon.roomItemRed{
+  background: #d9534f!important;
+}
+
+.roomItem > .roomItemIcon.roomItemBlue{
+  background: #5bc0de!important;
+}
+
+.itemText {
+    color: #3f3f3f;
+}
+
+.roomItem > .itemText{
+  line-height: 19px;
+  padding-top: 11px;
+  padding-left: 45px;
+  padding-right: 20px;
 }
 
 /* text angular Editor*/
