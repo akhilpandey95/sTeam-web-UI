@@ -365,6 +365,82 @@ textarea.ta-bind {
   height: 32px;
 }
 
+.table-of-contents {
+    margin-top: 1em
+}
+
+.page-header h1 {
+    font-size: 4em
+}
+
+.bs-docs-section {
+    margin-top: 6em
+}
+
+.bs-docs-section h1 {
+    padding-top: 100px
+}
+
+.bs-component {
+    position: relative
+}
+
+.bs-component .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    z-index: 1;
+    display: block
+}
+
+.bs-component .modal-dialog {
+    width: 90%
+}
+
+.bs-component .popover {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    margin: 20px
+}
+
+.nav-tabs {
+    margin-bottom: 15px
+}
+
+.progress {
+    margin-bottom: 10px
+}
+
+#home {
+    padding-top: 0
+}
+
+#home .navbar-brand {
+    padding: 13.5px 15px 12.5px
+}
+
+#home .navbar-brand>img {
+    display: inline;
+    margin: 0 10px;
+    height: 100%
+}
+
+#banner {
+    min-height: 300px;
+    border-bottom: none
+}
+
+#source-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    font-weight: 700
+}
+
 /* Media Queries */
 
 @media only screen and (max-width: 768px) {
