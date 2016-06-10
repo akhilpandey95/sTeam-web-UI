@@ -443,6 +443,22 @@ textarea.ta-bind {
 
 /* Media Queries */
 
+@media (min-width:768px) {
+    body>.navbar-transparent {
+        background-color: transparent
+    }
+    body>.navbar-transparent .navbar-nav>.open>a {
+        background-color: transparent!important
+    }
+}
+
+@media (max-width:767px) {
+    #banner {
+        margin-bottom: 2em;
+        text-align: center
+    }
+}
+
 @media only screen and (max-width: 768px) {
   #searchMe {
     display: block;
