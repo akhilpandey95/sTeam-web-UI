@@ -84,11 +84,50 @@ angular.module('steam')
     $scope.editable = true;
     $scope.content = $scope.data.empty;
 
+    $scope.allh1 = function() {
+      textAngularManager.updateToolDisplay('h1', {
+        buttontext: 'Heading 1'
+      });
+    };
+
+    $scope.allh2 = function() {
+      textAngularManager.updateToolDisplay('h2', {
+        buttontext: 'Heading 2'
+      });
+    };
+
+    $scope.allh3 = function() {
+      textAngularManager.updateToolDisplay('h3', {
+        buttontext: 'Heading 3'
+      });
+    };
+
+    $scope.allh4 = function() {
+      textAngularManager.updateToolDisplay('h4', {
+        buttontext: 'Heading 4'
+      });
+    };
+
+    $scope.allh5 = function() {
+      textAngularManager.updateToolDisplay('h5', {
+        buttontext: 'Heading 5'
+      });
+    };
+
+    $scope.allh6 = function() {
+      textAngularManager.updateToolDisplay('h6', {
+        buttontext: 'Heading 6'
+      });
+    };
+
     $scope.submit = function () {
       console.log("The document has been submitted");
     }
     $scope.clear = function () {
       console.log("The document has been reset");
+      $scope.data = {
+        orightml: $scope.content
+      }
     }
     $scope.resetEditor = function () {
       textAngularManager.resetToolsDisplay();
