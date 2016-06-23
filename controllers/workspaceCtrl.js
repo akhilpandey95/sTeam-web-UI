@@ -88,37 +88,37 @@ angular.module('steam')
       textAngularManager.updateToolDisplay('h1', {
         buttontext: 'Heading 1'
       });
-    };
+    }
 
     $scope.allh2 = function() {
       textAngularManager.updateToolDisplay('h2', {
         buttontext: 'Heading 2'
       });
-    };
+    }
 
     $scope.allh3 = function() {
       textAngularManager.updateToolDisplay('h3', {
         buttontext: 'Heading 3'
       });
-    };
+    }
 
     $scope.allh4 = function() {
       textAngularManager.updateToolDisplay('h4', {
         buttontext: 'Heading 4'
       });
-    };
+    }
 
     $scope.allh5 = function() {
       textAngularManager.updateToolDisplay('h5', {
         buttontext: 'Heading 5'
       });
-    };
+    }
 
     $scope.allh6 = function() {
       textAngularManager.updateToolDisplay('h6', {
         buttontext: 'Heading 6'
       });
-    };
+    }
 
     $scope.submit = function () {
       console.log("The document has been submitted");
@@ -134,3 +134,23 @@ angular.module('steam')
     }
   }])
 
+    .controller('workSpaceEditorCtrl', ['$scope', 'handler', 'localStorageService', 'Lightbox', '$sce',
+   function ($scope, handler, localStorageService, Lightbox, $sce) {
+
+    //imagee url
+    $scope.imgSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
+
+    //trust the source
+    $scope.source = $sce.trustAsResourceUrl($scope.imgSrc)
+
+    $scope.imgData = function() {
+      handler.get($scope.imgSrc, true).then(function (response) {
+        $scope.data = response
+      })
+    }
+
+    $scope.imgViewer = function (index) {
+      Lightbox.openModal($scope.imgSrc, index);
+    }
+
+  }])
