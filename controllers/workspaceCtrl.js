@@ -134,7 +134,7 @@ angular.module('steam')
     }
   }])
 
-    .controller('workSpaceEditorCtrl', ['$scope', 'handler', 'localStorageService', 'Lightbox', '$sce',
+    .controller('workSpaceImgviewerCtrl', ['$scope', 'handler', 'localStorageService', 'Lightbox', '$sce',
    function ($scope, handler, localStorageService, Lightbox, $sce) {
 
     //imagee url
@@ -152,5 +152,18 @@ angular.module('steam')
     $scope.imgViewer = function (index) {
       Lightbox.openModal($scope.imgSrc, index);
     }
+
+  }])
+
+    .controller('workSpaceMediaPlayerCtrl', ['$scope', 'handler', 'localStorageService', 'ngAudio', '$sce',
+   function ($scope, handler, localStorageService, ngAudio, $sce) {
+
+    //media url
+    $scope.mediaSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
+
+    //trust the source
+    $scope.source = $sce.trustAsResourceUrl($scope.mediaSrc)
+
+    $scope.audio = ngAudio.load($scope.mediaSrc);
 
   }])
