@@ -2,8 +2,10 @@ angular.module('steam',
   [
   'ui.router',
   'ui.bootstrap',
+  'bootstrapLightbox',
   'LocalStorageModule',
   'textAngular',
+  'ngAudio',
   'ngPDFViewer',
   'ngSanitize'
   ])
