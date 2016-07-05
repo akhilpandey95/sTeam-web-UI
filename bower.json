@@ -15,7 +15,9 @@
     "ng-dialog": "0.5.6",
     "sweetalert": "~1.1.0",
     "angular-bootstrap-lightbox": "^0.12.0",
-    "angular-audio": "^1.7.2"
+    "angular-audio": "^1.7.2",
+    "ng-photoswipe": "^0.1.1",
+    "ngvideo": "^1.0.2"
   },
   "private": true,
   "resolutions": {
