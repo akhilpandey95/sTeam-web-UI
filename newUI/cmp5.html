@@ -61,7 +61,7 @@
 
 <div class="container" ng-app="steam">
   <div class="row">
-    <div class="col-lg-12 col-md-3 col-sm-4">
+    <div class="col-lg-12 col-md-3 col-sm-4" ng-controller="sTeamaudioPlayer">
       <div class="jumbotron">
         <div class="row">
           <div class="col-lg-12">
@@ -73,9 +73,9 @@
             </ul>
           </div>
         </div>
-        <div class=col-md-offset-4>
+        <div class=col-md-offset-7>
           <h3>
-            {{audio.id}} &ndash; {{audio.currentTime | trackTime}}
+            {{audio.id}} &ndash; <code>{{audio.currentTime | trackTime}}</code>
           </h3>
           <p ng-if=audio.error>
             Error playing this sound.
@@ -84,48 +84,32 @@
             Sound is loading, or you are viewing this on a device that doesn't support the <code>canPlay</code> property.
           </p>
         </div>
-        <div ng-if='!audio.error' class='form-group col-md-8 col-md-offset-4'>
+        <div ng-if='!audio.error' class='form-group col-md-8 col-md-offset-6'>
           <form class=form-inline>
             <div class='form-group col-xs-9'>
-              <button class='btn btn-primary' ng-click='audio.paused ? audio.play() : audio.pause()'>{{audio.paused ? "Play" : "Pause" }}</button>
+              <button class='btn btn-success' ng-click='audio.paused ? audio.play() : audio.pause()'>{{audio.paused ? "Play" : "Pause" }}</button>
               <button class='btn btn-danger' ng-click='audio.restart()'>Stop</button>
-              <button class='btn btn-neutral' ng-click='audio.muting = !audio.muting'>{{audio.muting ? "Unmute" : "Mute" }}</button>
+              <button class='btn btn-info' ng-click='audio.muting = !audio.muting'>{{audio.muting ? "Unmute" : "Mute" }}</button>
             </div>
           </form>
         </div>
         <form class='form-horizontal'>
           <div class="form-group">
-            <label class="col-md-4 control-label" for="prependedtext">Current Time</label>
-            <div class="col-md-8">
-              <div class="input-group">
-                <span class="input-group-addon">Current Time</span>
-                <input class='form-control' type=text ng-model='audio.currentTime'>
-              </div>
-              <p class="help-block">
-                <strong>audioObject.currentTime:</strong>The current time of the object in seconds
-              </p>
-            </div>
-          </div>
-          <div class="form-group">
             <label class="col-md-4 control-label" for="prependedtext">Progress</label>
             <div class="col-md-8">
               <div class="input-group">
-                <span class="input-group-addon">Progress</span>
-                <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.progress'>
+                <span class="input-group-addon"></span>
+                <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.progress' style="background-color: #4e5d6c;">
               </div>
-              <p class="help-block">
-                <strong>audioObject.progress:</strong>The progress of the object as a percentage (0-1);
-              </p>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-4 control-label" for="prependedtext">Volume</label>
             <div class="col-md-8">
               <div class="input-group">
-                <span class="input-group-addon">Volume</span>
-                <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
+                <span class="input-group-addon"></span>
+                <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume' style="background-color: #4e5d6c;">
               </div>
-              <strong>audioObject.volume:</strong>The volume of the object as a percentage (0-1);
             </div>
           </div>
         </form>
@@ -140,7 +124,15 @@
 <script type="text/javascript" src="../bower_components/angular-audio/app/angular.audio.js"></script>
 <script type="text/javascript">
   angular.module('steam', [ 'ngAudio' ])
-  .controller('sTeamaudioPlayer', function($scope, ngAudio, songRemember) {
+
+  .value("songRemember",{})
+    .controller('sTeamaudioResource', function($scope, ngAudio) {
+        $scope.audios = [
+            ngAudio.load('audio/test.mp3'),
+        ]
+    })
+
+  .controller('sTeamaudioPlayer', ['$scope', 'ngAudio', 'songRemember', function($scope, ngAudio, songRemember) {
     var url = 'test.mp3';
 
     if (songRemember[url]) {
@@ -152,7 +144,7 @@
 
 
     }
-  });
+  }]);
 </script>
 
 </body>
