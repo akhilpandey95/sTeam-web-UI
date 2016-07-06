@@ -8,7 +8,7 @@
   <meta content="width=device-width, initial-scale=1" name="viewport">
 
   <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="../styles/spinner.css">
 
 </head>
@@ -59,7 +59,7 @@
   </div>
 </div>
 
-<div class="container" ng-app="steam">
+<div class="container" ng-app="steam" ng-controller="sTeamvideoPlayer">
   <div class="row">
     <div class="col-lg-12 col-md-3 col-sm-4">
       <div class="jumbotron">
@@ -67,32 +67,132 @@
           <div class="col-lg-12">
             <ul class="breadcrumb">
               <li><a href="#">Home</a></li>
-              <li><a href="#">{{user}}</a></li>
+              <li><a href="#">user</a></li>
               <li><a href="#">room</a></li>
               <li class="active">file</li>
             </ul>
           </div>
         </div>
+        <section class="ng-video-container">
+          <section class="video" ng-video>
+            <video vi-screen></video>
 
-      </div>
-    </div>
+            <section vi-controls class="controls">
+              <span vi-controls-play title="Play" class="fa fa-play" style="font-size: 12px;"></span>
+              <span vi-controls-pause title="Pause" class="fa fa-pause" style="font-size: 12px;"></span>
+            </section>
+
+            <section class="full-screen">
+              <span title="Full Screen" vi-full-screen-toggle class="fa fa-expand"></span>
+            </section>
+
+            <section vi-feedback class="feedback">
+
+              <span class="buffering" ng-show="buffering">Buffering...</span>
+
+              <section class="loading" ng-show="loading">
+                Loading...
+              </section>
+
+              <section vi-volume class="volume">
+
+                <div class="scale">
+                  <div class="bar" style="width: {{volume * 100}}%"></div>
+                </div>
+
+                <span vi-volume-decrease title="Decrease Volume" class="decrease fa fa-volume-down" style="color:white; font-size: 15px;"></span>
+                <span vi-volume-increase title="Increase Volume" class="increase fa fa-volume-up" style="color:white; font-size: 15px;"></span>
+
+              </section>
+              <section class="duration">
+                {{currentTime | number: 1}}s of {{duration | number: 1}}s
+                [{{percentagePlayed | number: 0}}%]
+              </section>
+
+              <section class="title">sTeam</section>
+              <section class="timeline">
+                <input vi-timeline />
+              </section>
+              <section vi-buffer class="buffer"></section>
+            </section>
+            <section vi-playlist class="playlist" ng-show="$parent.playlistOpen">
+
+              <ul>
+                <li class="title">
+                  <span class="fa fa-list"></span> &nbsp;
+                  Playlist
+                  <div class="close-playlist"
+                  title="Close Playlist"
+                  ng-click="$parent.playlistOpen = !$parent.playlistOpen">
+                  &times;
+                </div>
+              </li>
+              <li vi-playlist-video ng-repeat="video in videos" ng-model="video">
+                <span vi-meta ng-model="video" class="meta">
+                  {{duration | number: 2}}s
+                </span>
+                {{getVideoName(video)}}
+              </li>
+            </ul>
+          </section>
+          <span title="Open Playlist" ng-show="!playlistOpen" ng-click="playlistOpen = !playlistOpen" class="open-playlist fa fa-list" style="font-size: 12px;"></span>
+
+      </section>
+
+    </section>
   </div>
+</div>
+</div>
 </div>
 
 <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/dist/ng-video.min.js.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Service.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Bootstrap.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Buffer.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Controls.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/FullScreen.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/PlaybackRate.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Playlist.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Seekable.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Screen.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Feedback.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Meta.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Messages.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Timeline.js"></script>
+<script type="text/javascript" src="../bower_components/ngvideo/components/Volume.js"></script>
 <script type="text/javascript">
   angular.module('steam', [ 'ngVideo' ])
 
-  .controller('sTeamvideoPlayer', function($scope, $timeout, video) {
+  .controller('sTeamvideoPlayer', ['$scope', '$timeout', 'video', function($scope, $timeout, video) {
+    $scope.interface = {};
     $scope.playlistopen = false;
     $scope.videos = {
-      test1: "12345.mp4",
-      test2: "54321.mp4"
+      test1: "test1.mp4",
+      test2: "test2.mp4"
     };
-    $scope.addSource('mp4', $scope.videos.test1);
-    $scope.addSource('mp4', $scope.videos.test2);
+
+    $scope.$on('$videoReady', function videoReady() {
+      $scope.interface.options.setAutoplay(true);
+    });
+
+    $scope.playVideo = function playVideo(sourceUrl) {
+      video.addSource('mp4', sourceUrl, true);
+    }
+
+    $scope.getVideoName = function getVideoName(videoModel) {
+      switch (videoModel.src) {
+        case ($scope.videos.test1): return "test1";
+        case ($scope.videos.test2): return "test2";
+        default: return "Unknown Video";
+      }
+    }
+
+    video.addSource('mp4', $scope.videos.test1);
+    video.addSource('mp4', $scope.videos.test2);
+
   }]);
 </script>
 
