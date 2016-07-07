@@ -213,7 +213,8 @@ section.video section.timeline input::-webkit-slider-thumb {
     border-radius: 2px;
     outline: none;
     height: 15px;
-    width: 25px;
+    width: 15px;
+    border-radius: 10px;
 }
 
 section.video section.timeline input::-moz-range-thumb {
@@ -223,7 +224,8 @@ section.video section.timeline input::-moz-range-thumb {
     border-radius: 2px;
     outline: none;
     height: 15px;
-    width: 25px;
+    width: 15px;
+    border-radius: 10px;
 }
 
 section.video section.duration {

@@ -4,7 +4,15 @@ Web interface for sTeam - https://github.com/eMBee/sTeam/tree/steam-2.9-source
 
 ## Setup Instructions
 
-- Install npm
+- Install node
+
+For Ubuntu
+```
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+For Fedora
 
 ```
 dnf install npm
