@@ -13,11 +13,13 @@ angular.module('steam')
       handler.get('/home/' + $rootScope.user).then(function (response) {
         $scope.data = response
         $scope.items = $scope.data.inventory
+        console.log($scope.data)
       })
     } else {
       handler.get('/home/' + localStorageService.get('currentObjPath')).then(function (response) {
         $scope.data = response
         $scope.items = $scope.data.inventory
+        console.log($scope.data)
       })
     }
   }])

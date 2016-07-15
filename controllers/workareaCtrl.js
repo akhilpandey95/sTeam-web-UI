@@ -1,10 +1,10 @@
 angular.module('steam')
 
-  .controller('optionsCtrl', ['$state', '$scope', '$modal', '$location', 'localStorageService', 'handler',
-    function ($state, $scope, $modal, $location, localStorageService, handler) {
+  .controller('optionsCtrl', ['$state', '$scope', '$uibModal', '$location', 'localStorageService', 'handler',
+    function ($state, $scope, $uibModal, $location, localStorageService, handler) {
     $scope.createdoc = function (docDetails) {
       $scope.docDetails = docDetails;
-      $modal.open({
+      $uibModal.open({
         templateUrl: 'views/createdoc.html',
         controller: 'createDocCtrl',
         resolve: {
@@ -15,7 +15,7 @@ angular.module('steam')
       })
     }
     $scope.createroom = function () {
-      $modal.open({
+      $uibModal.open({
         templateUrl: 'views/createroom.html',
         controller: 'createRoomCtrl'
       })
@@ -47,8 +47,8 @@ angular.module('steam')
     }
   }])
 
-  .controller('createDocCtrl', ['$scope', '$location', '$modalInstance', 'fileUpload',
-    function ($scope, $location, $modalInstance, fileUpload) {
+  .controller('createDocCtrl', ['$scope', '$location', '$uibModalInstance', 'fileUpload',
+    function ($scope, $location, $uibModalInstance, fileUpload) {
       $scope.uploadFile = function (){
         var file = $scope.myFile;
         var uploadUrl = $location.path();
@@ -60,12 +60,12 @@ angular.module('steam')
         // body...
       }
       $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.dismiss('cancel');
       }
   }])
 
-  .controller('createRoomCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+  .controller('createRoomCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
     $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
+      $uibModalInstance.dismiss('cancel');
     }
   }])
