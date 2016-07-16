@@ -9,7 +9,7 @@
     "bootstrap": "~3.3.6",
     "angular-ui-router": "~0.2.15",
     "angular-local-storage": "~0.2.2",
-    "angular-bootstrap": "~2.0.0",
+    "angular-bootstrap": "~1.3.2",
     "angular-pdf": "~1.0.2",
     "ng-pdfviewer": "~0.2.1",
     "ng-dialog": "0.5.6",
@@ -17,11 +17,12 @@
     "angular-bootstrap-lightbox": "^0.12.0",
     "angular-audio": "^1.7.2",
     "ng-photoswipe": "^0.1.1",
-    "ngvideo": "^1.0.2"
+    "ngvideo": "^1.0.2",
+    "bootswatch-dist": "superhero"
   },
   "private": true,
   "resolutions": {
-    "angular": "~1.3.x",
+    "angular": ">=1.4.0",
     "bootstrap": "~3.3.5",
     "pdfjs-dist": "~1.0.925"
   }
