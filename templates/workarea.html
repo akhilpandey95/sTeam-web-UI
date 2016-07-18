@@ -1,51 +1,33 @@
 <!-- Breadcrumb, workarea switch, options -->
+<br>
 <div class="container">
   <div class="row">
-    <div class="col-xs-3 col-md-3">
-      <ol class="breadcrumb">
-        <li ng-repeat="item in navigationTrack | orderBy:id:reverse">
-          <a href="">{{item}}</a>
-        </li>
-      </ol>
-    </div>
-    <div class="col-xs-3 col-md-3">
-      <ul class="nav nav-tabs">
-        <tabset justified="true">
-          <tab heading="Private" ui-sref="workarea.list"></tab>
-          <tab heading="Groups" ui-sref="workarea.groups"></tab>
-        </tabset>
-      </ul>
-    </div>
-    <div class="col-xs-3 col-md-3">
-      <div ui-view="options"></div>
-    </div>
-    <div class="col-xs-2 col-md-2">
-      <div class="dropdown pull-right">
-        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1" type="button">Sort by <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="#" tabindex="-1">Title</a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">Author</a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">Date</a>
-          </li>
-          <li>
-            <a href="#" tabindex="-1">Doc type</a>
-          </li>
-        </ul>&nbsp;
+    <div class="col-lg-2">
+      <div class="alert alert-success">
+        <center><h4>{{user}}'s workarea</h4></center>
       </div>
     </div>
+    <div class="col-lg-5">
+      <a ui-sref="workarea.list" class="btn btn-info btn-lg btn-block">Private</a>
+    </div>
+    <div class="col-lg-5">
+      <a ui-sref="workarea.groups" class="btn btn-warning btn-lg btn-block">Groups</a>
+    </div>
   </div>
-</div><br>
-<!-- for loading workspace -->
+</div>
 <div class="container">
-  <div ui-view="groupsList"></div>
-  <div ui-view="workspaceList"></div><br>
-  <div ui-view="workspaceDetailed"></div>
-  <hr>
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-4">
+      <div ui-view="options"></div>
+    </div>
+    </div>
+<br>
+<br>
+<!-- for loading workspace -->
+<div ui-view="groupsList"></div>
+<div ui-view="workspaceList"></div><br>
+<div ui-view="workspaceDetailed"></div>
+<hr>
 </div>
 <br>
 <div class="container">

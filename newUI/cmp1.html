@@ -14,7 +14,7 @@
 </head>
 <body>
 
- <nav class="navbar navbar-default navbar-fixed-top">
+ <nav class="navbar navbar-default navbar-fixed-top" ng-controller="navCtrl">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand">sTeam Web Interface</a>
@@ -26,13 +26,13 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li class="dropdown" ng-if="!authStatus.isLoggedOut()">
           <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">{{user}} <span class="caret"></span></a>
           <ul class="dropdown-menu" aria-labelledby="download">
             <li><a href="#">Profile</a></li>
             <li class="divider"></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#" ng-click="authStatus.logOut()">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -47,14 +47,14 @@
   <div class="row">
     <div class="col-lg-2">
       <div class="alert alert-success">
-        <center><h4>{{user's}} workarea</h4></center>
+        <center><h4>{{user}}'s workarea</h4></center>
       </div>
     </div>
     <div class="col-lg-5">
-      <a href="#" class="btn btn-info btn-lg btn-block">Private</a>
+      <a ui-sref="workarea.list" class="btn btn-info btn-lg btn-block">Private</a>
     </div>
     <div class="col-lg-5">
-      <a href="#" class="btn btn-warning btn-lg btn-block">Groups</a>
+      <a ui-sref="workarea.groups" class="btn btn-warning btn-lg btn-block">Groups</a>
     </div>
   </div>
 </div>
@@ -64,9 +64,9 @@
     <div class="col-lg-2 col-md-2 col-sm-4">
       <br>
       <div class="list-group table-of-contents">
-        <a class="list-group-item" href="#">Opt1</a>
-        <a class="list-group-item" href="#">Opt2</a>
-        <a class="list-group-item" href="#">Opt3</a>
+        <a class="list-group-item" href="#" ng-click="createroom()">Create Room <i class="clickable fa fa-folder fa-lg"></i></a>
+        <a class="list-group-item" href="#" ng-click="createdoc()">Create Document <i class="clickable fa fa-plus fa-lg"></i></a>
+        <a class="list-group-item" href="#" ng-click="delete()">Delete <i class="clickable fa fa-trash-o fa-lg"></i></a>
         <a class="list-group-item" href="#">Opt4</a>
         <a class="list-group-item" href="#">Opt5</a>
         <a class="list-group-item" href="#">Opt6</a>

@@ -1,16 +1,17 @@
-<div class="container">
-<legend class="text-left">Comments</legend>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <div class="col-sm-10">
-        <input class="form-control" type="text" ng-model="commentContent" required id="searchMe">
-        <span></span>
-      </div>
-      <div class="col-sm-2">
-        <button type="button" class="btn btn-primary" ng-click="addComment();">Submit</button>
-    </div>
-      <div>
-        <ul id="comments">
+  <div class="row">
+    <div class="col-lg-12">
+      <legend class="text-left">Comments</legend>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-sm-10">
+            <input class="form-control" type="text" ng-model="commentContent" required id="searchMe">
+            <span></span>
+          </div>
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-primary" ng-click="addComment();">Submit</button>
+          </div>
+          <div>
+            <ul id="comments">
           <!-- <li ng-repeat="comment in comments track by $index">
             <span>{{comment.text}}</span>
           </li> -->
@@ -18,4 +19,5 @@
       </div>
     </div>
   </form>
+</div>
 </div>
