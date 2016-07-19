@@ -19,17 +19,15 @@
   <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-4">
       <div ui-view="options"></div>
+      <br>
+      <br>
     </div>
+       <!-- for loading workspace -->
+      <div ui-view="groupsList"></div>
+      <div ui-view="workspaceList"></div><br>
+      <div ui-view="workspaceDetailed"></div>
     </div>
-<br>
-<br>
-<!-- for loading workspace -->
-<div ui-view="groupsList"></div>
-<div ui-view="workspaceList"></div><br>
-<div ui-view="workspaceDetailed"></div>
-<hr>
 </div>
-<br>
 <div class="container">
   <div ui-view="comments"></div>
 </div>
