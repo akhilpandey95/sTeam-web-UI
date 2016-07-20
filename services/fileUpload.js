@@ -6,7 +6,7 @@ angular.module('steam')
       $rootScope.loading = true;
       $rootScope.uploadComplete = false;
       fd.append('file', file);
-      $http.post(uploadUrl, fd, {
+      $http.put(uploadUrl, fd, {
         transformRequest: angular.identity,
         headers: {'Content-Type': undefined}
       })

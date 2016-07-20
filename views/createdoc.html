@@ -29,12 +29,8 @@
           </div>
           <div class="col-md-3">
             <span class="btn btn-info btn-file"> Browse
-              <input type="file" file-model="myfile" onchange="showUpload();">
+              <input type="file" file-model="myfile">
             </span>
-          </div>
-          <div class="col-md-3">
-              <input type="button" id="uploadbtn" class="btn btn-info" ng-click="uploadFile()" value="Upload" style="display: none;">
-              <label class="col-md-3 text-success" ng-show="uploadComplete">100% Upload</label>
           </div>
         </div>
       </div>
@@ -67,8 +63,4 @@
     });
   });
 
-  function showUpload () {
-    var x = document.getElementById('uploadbtn');
-    x.style.display= "inline-block";
-  }
 </script>

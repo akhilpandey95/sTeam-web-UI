@@ -47,17 +47,25 @@ angular.module('steam')
     }
   }])
 
-  .controller('createDocCtrl', ['$scope', '$location', '$uibModalInstance', 'fileUpload',
-    function ($scope, $location, $uibModalInstance, fileUpload) {
-      $scope.uploadFile = function (){
-        var file = $scope.myFile;
-        var uploadUrl = $location.path();
-        console.log('file is ' );
-        console.dir(file);
-        fileUpload.uploadFileToUrl(file, uploadUrl);
+  .controller('createDocCtrl', ['$scope', '$state', '$location', '$uibModalInstance', 'fileUpload', 'handler',
+    function ($scope, $state, $location, $uibModalInstance, fileUpload, handler) {
+      var uploadUrl = '/home/' + $scope.user + '/test'
+      var fileObj = {
+        class: "Document",
+        content: $scope.myfile,
+        name: "test"
       }
       $scope.submit = function () {
-        // body...
+        handler.put(uploadUrl, fileObj).then(function () {
+          $uibModalInstance.dismiss('cancel')
+          swal("created a document")
+          $state.go('workarea.list')
+        })
+        .catch(function () {
+          $uibModalInstance.dismiss('cancel')
+          swal('Unable to create a document')
+          $state.go('workarea.list')
+        })
       }
       $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
