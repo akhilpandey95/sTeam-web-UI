@@ -20,6 +20,12 @@ angular.module('steam')
         controller: 'createRoomCtrl'
       })
     }
+    $scope.createcontainer = function () {
+      $uibModal.open({
+        templateUrl: 'views/createcontainer.html',
+        controller: 'createContainerCtrl'
+      })
+    }
     $scope.delete = function () {
       if (localStorageService.get('currentObjPath') != null) {
         handler.delete('/' + localStorageService.get('currentObjPath')).then(function () {
@@ -89,6 +95,31 @@ angular.module('steam')
         .catch(function () {
           $uibModalInstance.dismiss('cancel')
           swal('Unable to create a room')
+          $state.go('workarea.list')
+        })
+      }
+    $scope.cancel = function () {
+      $uibModalInstance.dismiss('cancel');
+    }
+  }])
+
+  .controller('createContainerCtrl', ['$scope', '$state', '$uibModalInstance', 'handler',
+    function ($scope, $state, $uibModalInstance, handler) {
+      var uploadUrl = '/home/' + $scope.user + '/test123'
+      var roomObj = {
+        class: "Container",
+        name: "test123",
+        description: "this is a container"
+      }
+      $scope.submit = function () {
+        handler.put(uploadUrl, roomObj).then(function () {
+          $uibModalInstance.dismiss('cancel')
+          swal("created a container")
+          $state.go('workarea.list')
+        })
+        .catch(function () {
+          $uibModalInstance.dismiss('cancel')
+          swal('Unable to create a container')
           $state.go('workarea.list')
         })
       }
