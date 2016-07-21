@@ -72,7 +72,26 @@ angular.module('steam')
       }
   }])
 
-  .controller('createRoomCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+  .controller('createRoomCtrl', ['$scope', '$state', '$uibModalInstance', 'handler',
+    function ($scope, $state, $uibModalInstance, handler) {
+      var uploadUrl = '/home/' + $scope.user + '/test'
+      var roomObj = {
+        class: "Room",
+        name: "test",
+        description: "this is a test description"
+      }
+      $scope.submit = function () {
+        handler.put(uploadUrl, roomObj).then(function () {
+          $uibModalInstance.dismiss('cancel')
+          swal("created a room")
+          $state.go('workarea.list')
+        })
+        .catch(function () {
+          $uibModalInstance.dismiss('cancel')
+          swal('Unable to create a room')
+          $state.go('workarea.list')
+        })
+      }
     $scope.cancel = function () {
       $uibModalInstance.dismiss('cancel');
     }
