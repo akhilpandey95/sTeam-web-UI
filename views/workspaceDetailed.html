@@ -1,55 +1,30 @@
-<div class="container col-sm-offest-1 col-md-offset-1">
-<!-- Unsupported mime type -->
-<div class="col-sm-8 col-md-8" ng-if="mimeTypeHandler() == 'unknown'">
-  <div class="alert alert-warning" role="alert">
-    <p class="text-center">This document can't be viewed in browser window.</p>
-  </div>
-</div>
-
-<!-- image/* -->
-<div class="col-sm-12 col-md-12" ng-if="mimeTypeHandler() == 'image'">
-  <img ng-src="{{source}}" style="max-width: 500px; max-height: 500px" />
-</div>
-
-<!-- application/pdf -->
-<div class="col-sm-12 col-md-12" style="text-align: center" ng-if="mimeTypeHandler() == 'pdf'">
-  <div class="row" style="text-align: center">
-    <div class="btn-group">
-      <button class="btn" ng-click="gotoPage(1)">|&lt;</button>
-      <button class="btn" ng-click="prevPage()">&lt;</button>
-      <button class="btn" ng-click="nextPage()">&gt;</button>
-      <button class="btn" ng-click="gotoPage(totalPages)">&gt;|</button>
+<div class="col-lg-10 col-md-3 col-sm-4" style="margin-top:15px;">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="breadcrumb">
+          <li><a href="#" ui-sref="workarea.list">Home</a></li>
+          <li>{{user}}</li>
+          <li class="active">{{pdfURL.substr(41)}}</li>
+        </ul>
+      </div>
+    </div>
+    <!-- application/pdf -->
+    <div ng-if="mimeTypeHandler() == 'pdf'" class="text-center container">
+      <div class="row">
+        <div class="btn-group">
+          <button class="btn btn-default" ng-click="gotoPage(1)">|&lt;</button>
+          <button class="btn btn-primary" ng-click="prevPage()">&lt;</button>
+          <button class="btn btn-primary" ng-click="nextPage()"> &gt;</button>
+          <button class="btn btn-default" ng-click="gotoPage(totalPages)">&gt;|</button>
+        </div>
+      </div>
+      <div class="row">
+        <span class="label" ng-show="totalPages">{{currentPage}}/{{totalPages}}</span>
+      </div>
+      <div class="row">
+        <pdfviewer src="{{pdfURL | trusted}}" on-page-load='pageLoaded(page,total)' id="viewer" load-progress='loadProgress(loaded, total, state)'></pdfviewer>
+      </div>
     </div>
   </div>
-  <div class="row" >
-    <pdfviewer ng-src="{{pdfURL | trusted}}" on-page-load='pageLoaded(page,total)' id="viewer" load-progress='loadProgress(loaded, total, state)'></pdfview
-er>
-  </div>
-</div>
-
-<!-- audio/* -->
-<div class="col-sm-12 col-md-12" ng-if="mimeTypeHandler() == 'audio'">
-  <audio ng-src="{{source}}" controls=""></audio>
-</div>
-
-<div>
- <button ng-click='audio.paused ? audio.play() : audio.pause()'>Pause</button>
- <button ng-click='audio.restart()'>Stop</button>
- <button ng-click='audio.muting = !audio.muting'>Mute</button>
-
- <label>Time</label>
- <input class='form-control' type=text ng-model='audio.currentTime'>
- <label>Volume</label>
- <input class='form-control' type=range min=0 max=1 step=0.01 ng-model='audio.volume'>
-</div>
-
-<!-- video/* -->
-<div class="col-sm-12 col-md-12" ng-if="mimeTypeHandler() == 'video'">
-  <video ng-src="{{source}}" allowfullscreen controls></video>
-</div>
-
-<!-- text -->
-<div class="col-sm-8 col-md-8" ng-if="mimeTypeHandler() == 'text'" ng-init="txtSrc()">
-  <text-angular ng-model="data"></text-angular>
-</div>
 </div>
