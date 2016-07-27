@@ -9,6 +9,12 @@
         </ul>
       </div>
     </div>
+    <!-- Unsupported mime type -->
+    <div ng-if="mimeTypeHandler() == 'unknown'" class="text-center container">
+      <div class="alert alert-warning" role="alert">
+        <p class="text-center">This document can't be viewed in browser window.</p>
+      </div>
+    </div>
     <!-- application/pdf -->
     <div ng-if="mimeTypeHandler() == 'pdf'" class="text-center container">
       <div class="row">
