@@ -72,5 +72,9 @@
   <div ng-if="mimeTypeHandler() == 'image'" class="text-center container">
     <img ng-src="{{source}}" style="max-width: 500px; max-height: 500px" />
   </div>
+  <!-- video/* -->
+  <div ng-if="mimeTypeHandler() == 'video'" class="text-center container">
+    <video ng-src="{{source}}" allowfullscreen controls></video>
+  </div>
 </div>
 </div>
