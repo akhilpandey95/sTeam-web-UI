@@ -176,14 +176,15 @@ angular.module('steam')
     }
 }])
 
-.controller('workspaceVideoCtrl', ['$scope', '$timeout', 'video',
-  function($scope, $timeout, video) {
+.controller('workspaceVideoCtrl', ['$scope', '$timeout', 'video', 'localStorageService', '$sce',
+  function($scope, $timeout, video, localStorageService, $sce) {
 
   $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
   $scope.source = $sce.trustAsResourceUrl($scope.dataSrc)
   $scope.interface = {};
   $scope.playlistopen = false;
   var url = $scope.dataSrc;
+  $scope.getVideoName = url.substr(41);
 
   $scope.$on('$videoReady', function videoReady() {
     $scope.interface.options.setAutoplay(true);
@@ -193,7 +194,6 @@ angular.module('steam')
     video.addSource('mp4', sourceUrl, true);
   }
 
-  $scope.getVideoName = function getVideoName(videoModel) {
-    //testing
-  }
+
+  video.addSource('mp4', url);
 }])

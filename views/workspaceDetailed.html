@@ -73,8 +73,67 @@
     <img ng-src="{{source}}" style="max-width: 500px; max-height: 500px" />
   </div>
   <!-- video/* -->
-  <div ng-if="mimeTypeHandler() == 'video'" class="text-center container">
-    <video ng-src="{{source}}" allowfullscreen controls></video>
-  </div>
+  <div ng-if="mimeTypeHandler() == 'video'" ng-controller="workspaceVideoCtrl" class="text-center container">
+    <section class="ng-video-container">
+      <section class="video" ng-video>
+        <video vi-screen></video>
+
+        <section vi-controls class="controls">
+          <span vi-controls-play title="Play" class="fa fa-play" style="font-size: 12px;"></span>
+          <span vi-controls-pause title="Pause" class="fa fa-pause" style="font-size: 12px;"></span>
+        </section>
+
+        <section class="full-screen">
+          <span title="Full Screen" vi-full-screen-toggle class="fa fa-expand"></span>
+        </section>
+
+        <section vi-feedback class="feedback">
+          <span class="buffering" ng-show="buffering">Buffering...</span>
+          <section class="loading" ng-show="loading">
+            Loading...
+          </section>
+
+          <section vi-volume class="volume">
+            <div class="scale">
+              <div class="bar" style="width: {{volume * 100}}%"></div>
+            </div>
+
+            <span vi-volume-decrease title="Decrease Volume" class="decrease fa fa-volume-down" style="color:white; font-size: 15px;"></span>
+            <span vi-volume-increase title="Increase Volume" class="increase fa fa-volume-up" style="color:white; font-size: 15px;"></span>
+          </section>
+          <section class="duration">
+            {{currentTime | number: 1}}s of {{duration | number: 1}}s
+            [{{percentagePlayed | number: 0}}%]
+          </section>
+
+          <section class="title">sTeam</section>
+          <section class="timeline">
+            <input vi-timeline />
+          </section>
+          <section vi-buffer class="buffer"></section>
+        </section>
+        <section vi-playlist class="playlist" ng-show="$parent.playlistOpen">
+          <ul>
+            <li class="title">
+              <span class="fa fa-list"></span> &nbsp;
+              Playlist
+              <div class="close-playlist"
+              title="Close Playlist"
+              ng-click="$parent.playlistOpen = !$parent.playlistOpen">
+              &times;
+            </div>
+          </li>
+          <li vi-playlist-video ng-repeat="video in videos" ng-model="video">
+            <span vi-meta ng-model="video" class="meta">
+              {{duration | number: 2}}s
+            </span>
+            {{getVideoName}}
+          </li>
+        </ul>
+      </section>
+      <span title="Open Playlist" ng-show="!playlistOpen" ng-click="playlistOpen = !playlistOpen" class="open-playlist fa fa-list" style="font-size: 12px;"></span>
+    </section>
+  </section>
+</div>
 </div>
 </div>
