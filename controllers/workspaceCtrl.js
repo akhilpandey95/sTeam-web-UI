@@ -139,18 +139,13 @@ angular.module('steam')
 .controller('workSpaceImgviewerCtrl', ['$scope', 'handler', 'localStorageService', 'Lightbox', '$sce',
  function ($scope, handler, localStorageService, Lightbox, $sce) {
 
-    //imagee url
     $scope.imgSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
-
-    //trust the source
     $scope.source = $sce.trustAsResourceUrl($scope.imgSrc)
-
     $scope.imgData = function() {
       handler.get($scope.imgSrc, true).then(function (response) {
         $scope.data = response
       })
     }
-
     $scope.imgViewer = function (index) {
       Lightbox.openModal($scope.imgSrc, index);
     }
@@ -179,4 +174,26 @@ angular.module('steam')
       $scope.audio.volume = 0.8;
       workspaceAudio[url] = $scope.audio;
     }
+}])
+
+.controller('workspaceVideoCtrl', ['$scope', '$timeout', 'video',
+  function($scope, $timeout, video) {
+
+  $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
+  $scope.source = $sce.trustAsResourceUrl($scope.dataSrc)
+  $scope.interface = {};
+  $scope.playlistopen = false;
+  var url = $scope.dataSrc;
+
+  $scope.$on('$videoReady', function videoReady() {
+    $scope.interface.options.setAutoplay(true);
+  });
+
+  $scope.playVideo = function playVideo(sourceUrl) {
+    video.addSource('mp4', sourceUrl, true);
+  }
+
+  $scope.getVideoName = function getVideoName(videoModel) {
+    //testing
+  }
 }])

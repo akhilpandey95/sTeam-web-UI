@@ -6,6 +6,7 @@ angular.module('steam',
   'LocalStorageModule',
   'textAngular',
   'ngAudio',
+  'ngVideo',
   'ngPDFViewer',
   'ngSanitize'
   ])
