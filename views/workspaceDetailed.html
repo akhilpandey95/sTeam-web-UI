@@ -78,6 +78,19 @@
   <div ng-if="mimeTypeHandler() == 'image'" class="text-center container">
     <img ng-src="{{source}}" style="max-width: 500px; max-height: 500px" />
   </div>
+  <!-- text -->
+  <div ng-if="mimeTypeHandler() == 'text'" ng-controller="workSpaceEditorCtrl" ng-init="txtSrc()" class="text-center container">
+    <br>
+    <div class="container">
+      <div text-angular ng-model="data" name="texteditor" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
+    </div>
+    <br>
+    <div class="container text-center lighter border-around">
+      <div class="lighter roboto">
+      </div>
+    </div>
+    <br>
+  </div>
   <!-- video/* -->
   <div ng-if="mimeTypeHandler() == 'video'" ng-controller="workspaceVideoCtrl" class="text-center container">
     <section class="ng-video-container">

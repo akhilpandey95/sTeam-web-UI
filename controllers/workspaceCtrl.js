@@ -49,13 +49,6 @@ angular.module('steam')
     // Trusting the resource
     $scope.source = $sce.trustAsResourceUrl($scope.dataSrc)
 
-    // Text
-    $scope.txtSrc = function() {
-      handler.get($scope.dataSrc, true).then(function (response) {
-        $scope.data = response
-      })
-    }
-
     // Pdf
     $scope.pdfURL = $scope.dataSrc
     $scope.instance = pdf.Instance("viewer");
@@ -77,14 +70,19 @@ angular.module('steam')
     }
   }])
 
-.controller('workSpaceEditorCtrl', ['$scope', 'handler', 'localStorageService', 'textAngularManager', '$document',
- function ($scope, handler, localStorageService, textAngularManager, $document) {
-  $scope.data = {
-    empty: '<small>Please enter text</small>',
-    full: ''
-  }
+.controller('workSpaceEditorCtrl', ['$scope', 'handler', 'localStorageService', 'textAngularManager', '$document', '$sce',
+ function ($scope, handler, localStorageService, textAngularManager, $document, $sce) {
+
   $scope.editable = true;
-  $scope.content = $scope.data.empty;
+  $scope.dataSrc = localStorageService.get('baseurl') + 'home/' + localStorageService.get('currentObjPath')
+  $scope.source = $sce.trustAsResourceUrl($scope.dataSrc)
+
+  $scope.txtSrc = function() {
+    handler.get($scope.dataSrc, true).then(function (response) {
+      $scope.data = response
+    })
+  }
+
 
   $scope.allh1 = function() {
     textAngularManager.updateToolDisplay('h1', {
@@ -125,12 +123,7 @@ angular.module('steam')
   $scope.submit = function () {
     console.log("The document has been submitted");
   }
-  $scope.clear = function () {
-    console.log("The document has been reset");
-    $scope.data = {
-      orightml: $scope.content
-    }
-  }
+
   $scope.resetEditor = function () {
     textAngularManager.resetToolsDisplay();
   }
