@@ -83,6 +83,23 @@ angular.module('steam')
     })
   }
 
+  $scope.save = function () {
+    handler.get($scope.dataSrc, true).then(function (response) {
+      $scope.data = response
+      var doc = {
+        class: "Document",
+        content: $scope.data,
+        name: $scope.dataSrc.substr(41)
+      }
+      handler.put('/home/' + localStorageService.get('currentObjPath'), $scope.data).then(function () {
+        alert("Saved the doc")
+      })
+    })
+    .catch(function () {
+      alert("Couldn't save the document")
+    })
+  }
+
 
   $scope.allh1 = function() {
     textAngularManager.updateToolDisplay('h1', {

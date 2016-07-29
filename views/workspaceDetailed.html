@@ -82,6 +82,7 @@
   <div ng-if="mimeTypeHandler() == 'text'" ng-controller="workSpaceEditorCtrl" ng-init="txtSrc()" class="text-center container">
     <br>
     <div class="container">
+      <a class="list-group-item" ng-click="save()">Save <i class="clickable fa fa-folder fa-lg"></i></a>
       <div text-angular ng-model="data" name="texteditor" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
     </div>
     <br>
