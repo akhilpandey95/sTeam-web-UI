@@ -9,6 +9,32 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-md-12">
+        <div class="roomItem">
+          <div class="roomItemIcon"><i class="fa fa-files-o"></i></div>
+          <div class="itemText">--name-- <a href="#">view</a> </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="roomItem">
+          <div class="roomItemIcon roomItemBlue"><i class="fa fa-file-text"></i></div>
+          <div class="itemText">--name--<a href="#">view</a></div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="roomItem">
+          <div class="roomItemIcon roomItemGreen"><i class="fa fa-file-pdf-o"></i></div>
+          <div class="itemText">--name-- <a href="#">view</a></div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="roomItem">
+          <div class="roomItemIcon roomItemRed"><i class="fa fa-file-image-o"></i></div>
+          <div class="itemText"> --name-- <a href="#">view</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-12">
         <div class="col-lg-4" ng-repeat="item in items" ng-if="item.class == 'Room' || item.class == 'Document' || item.class == 'Container'">
           <div class="panel panel-success clickable" ng-show="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
