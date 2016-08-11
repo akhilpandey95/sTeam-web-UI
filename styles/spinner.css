@@ -423,6 +423,15 @@ section.video section.full-screen {
   background: #5bc0de!important;
 }
 
+.roomItem > .roomItemIcon.roomItemOrange{
+  background: #cf782f!important;
+}
+
+.roomItem > .roomItemIcon.roomItemGrey{
+  background: #3f3f3f!important;
+}
+
+
 .itemText {
     color: #3f3f3f;
 }
