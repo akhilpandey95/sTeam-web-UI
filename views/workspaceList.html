@@ -10,15 +10,25 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="roomItem">
+        <div class="roomItem" ng-repeat="item in items" ng-if="item.class == 'Room'">
           <div class="roomItemIcon"><i class="fa fa-files-o"></i></div>
-          <div class="itemText clickable">--name-- <a href="#">view</a> </div>
+          <div class="itemText clickable"> {{item.name}} <a href="#" ng-show="item.class == 'Room'" ng-click="invokeObj(item.class, item.path, item.mime_type)">&nbsp;view</a> </div>
+          <div class="itemText clickable" ng-if="item.description != ''"> {{item.description}} </div>
+          <div class="itemText clickable" ng-if="item.description === '0'"> No Description Found </div>
         </div>
       </div>
       <div class="col-md-12">
-        <div class="roomItem">
+        <div class="roomItem" ng-repeat="item in items" ng-if="item.class == 'Container'">
+          <div class="roomItemIcon roomItemOrange"><i class="fa fa-file"></i></div>
+          <div class="itemText clickable"> {{item.name}} <a href="#" ng-show="item.class == 'Container'" ng-click="invokeObj(item.class, item.path, item.mime_type)">&nbsp;view</a> </div>
+          <div class="itemText clickable" ng-if="item.description != ''"> {{item.description}} </div>
+          <div class="itemText clickable" ng-if="item.description === '0'"> No Description Found </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="roomItem" ng-repeat="item in items" ng-if="item.mime_type == 'text/plain' || item.mime_type == 'text/html' || item.mime_type == 'text/css' || item.mime_type == 'application/x-javascript' || item.mime_type == 'application/x-pike' || item.mime_type == 'application/x-unknown-content-type'">
           <div class="roomItemIcon roomItemBlue"><i class="fa fa-file-text"></i></div>
-          <div class="itemText clickable">--name--<a href="#">view</a></div>
+          <div class="itemText clickable"> {{item.name}} <a href="#" ng-show="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">&nbsp;view</a></div>
         </div>
       </div>
       <div class="col-md-12">
