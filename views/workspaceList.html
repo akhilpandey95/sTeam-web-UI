@@ -22,9 +22,9 @@
         </div>
       </div>
       <div class="col-md-12">
-        <div class="roomItem">
+        <div class="roomItem" ng-repeat="item in items" ng-if="item.mime_type == 'application/pdf'">
           <div class="roomItemIcon roomItemGreen"><i class="fa fa-file-pdf-o"></i></div>
-          <div class="itemText clickable">--name-- <a href="#">view</a></div>
+          <div class="itemText clickable"> {{item.name}} <a href="#" ng-show="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">&nbsp;view</a></div>
         </div>
       </div>
       <div class="col-md-12">
