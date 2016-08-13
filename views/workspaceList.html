@@ -56,49 +56,5 @@
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="col-lg-4" ng-repeat="item in items" ng-if="item.class == 'Room' || item.class == 'Document' || item.class == 'Container'">
-          <div class="panel panel-success clickable" ng-show="item.class == 'Document'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{item.name}}</h3>
-            </div>
-            <div class="panel-body" ng-if="item.description != ''">
-              {{item.description}}
-            </div>
-            <div class="panel-body" ng-if="item.description.length == 0">
-              No description found
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4" ng-repeat="item in items" ng-if="item.class == 'Room' || item.class == 'Document' || item.class == 'Container'">
-          <div class="panel panel-info clickable" ng-show="item.class == 'Room'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{item.name}}</h3>
-            </div>
-            <div class="panel-body" ng-if="item.description != ''">
-              {{item.description}}
-            </div>
-            <div class="panel-body" ng-if="item.description.length == 0">
-              No description found
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4" ng-repeat="item in items" ng-if="item.class == 'Room' || item.class == 'Document' || item.class == 'Container'">
-          <div class="panel panel-danger clickable" ng-show="item.class == 'Container'" ng-click="invokeObj(item.class, item.path, item.mime_type)">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{item.name}}</h3>
-            </div>
-            <div class="panel-body" ng-if="item.description != ''">
-              {{item.description}}
-            </div>
-            <div class="panel-body" ng-if="item.description.length == 0">
-              No description found
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
