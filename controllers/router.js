@@ -23,7 +23,7 @@ angular.module('steam',
 
     .state('register', {
       url: '/register',
-      templateUrl: '/templates/login.html',
+      templateUrl: '/templates/register.html',
       controller: 'registerCtrl',
       requireLogin: false
     })
