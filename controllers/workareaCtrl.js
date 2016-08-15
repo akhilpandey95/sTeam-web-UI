@@ -65,12 +65,14 @@ angular.module('steam')
         handler.put(uploadUrl, fileObj).then(function () {
           $uibModalInstance.dismiss('cancel')
           swal("created a document")
-          $state.go('workarea.list')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
         })
         .catch(function () {
           $uibModalInstance.dismiss('cancel')
           swal('Unable to create a document')
-          $state.go('workarea.list')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
         })
       }
       $scope.cancel = function () {
@@ -90,12 +92,14 @@ angular.module('steam')
         handler.put(uploadUrl, roomObj).then(function () {
           $uibModalInstance.dismiss('cancel')
           swal("created a room")
-          $state.go('workarea.list')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
         })
         .catch(function () {
           $uibModalInstance.dismiss('cancel')
           swal('Unable to create a room')
-          $state.go('workarea.list')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
         })
       }
     $scope.cancel = function () {
@@ -115,12 +119,14 @@ angular.module('steam')
         handler.put(uploadUrl, roomObj).then(function () {
           $uibModalInstance.dismiss('cancel')
           swal("created a container")
-          $state.go('workarea.list')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
         })
         .catch(function () {
           $uibModalInstance.dismiss('cancel')
           swal('Unable to create a container')
-          $state.go('workarea.list')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
         })
       }
     $scope.cancel = function () {
