@@ -52,6 +52,21 @@ angular.module('steam',
       }
     })
 
+    .state('workarea.test', {
+      url: '^/testing/:path',
+      requireLogin: true,
+      views: {
+        'options': {
+          templateUrl: '/views/options.html',
+          controller: 'optionsCtrl'
+        },
+        'uploadFile': {
+          templateUrl: '/views/uploadFile.html',
+          controller: 'uploadCtrl'
+        }
+      }
+    })
+
     .state('workarea.list', {
       url: '^/room/:path',
       requireLogin: true,
@@ -93,6 +108,7 @@ angular.module('steam',
         }
       }
     })
+
     $urlRouterProvider.otherwise('/room/')
   }])
 
