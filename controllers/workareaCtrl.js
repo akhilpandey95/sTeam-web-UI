@@ -80,6 +80,35 @@ angular.module('steam')
       }
   }])
 
+  .controller('uploadCtrl', ['$rootScope', '$scope', '$location', 'localStorageService', 'handler',
+    function ($rootScope, $scope, $location, localStorageService, handler) {
+      $scope.docDetails = {}
+      var uploadUrl = '/home/' + $scope.user + '/' + $scope.docDetails.docName
+      var fileObj = {
+        class: "Document",
+        content: "this file contains some content",
+        name: $scope.docDetails.docName
+      }
+      $scope.submit = function () {
+        handler.put(uploadUrl, fileObj).then(function () {
+          $rootScope.loading = false;
+          swal('File uploaded successfully')
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
+        })
+        .catch(function () {
+          swal('Unable to upload your file')
+        })
+        $rootScope.loading = true;
+      }
+      $scope.cancel = function () {
+        if (localStorageService.get('currentObjPath') != null) {
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
+        }
+      }
+  }])
+
   .controller('createRoomCtrl', ['$scope', '$state', '$uibModalInstance', 'handler',
     function ($scope, $state, $uibModalInstance, handler) {
       var uploadUrl = '/home/' + $scope.user + '/test'
