@@ -83,13 +83,13 @@ angular.module('steam')
   .controller('uploadCtrl', ['$rootScope', '$scope', '$location', 'localStorageService', 'handler',
     function ($rootScope, $scope, $location, localStorageService, handler) {
       $scope.docDetails = {}
-      var uploadUrl = '/home/' + $scope.user + '/' + $scope.docDetails.docName
-      var fileObj = {
-        class: "Document",
-        content: "this file contains some content",
-        name: $scope.docDetails.docName
-      }
-      $scope.submit = function () {
+      $scope.submit = function (test) {
+        var uploadUrl = '/home/' + $scope.user + '/' + test
+        var fileObj = {
+          class: "Document",
+          content: $scope.myfile,
+          name: test
+        }
         handler.put(uploadUrl, fileObj).then(function () {
           $rootScope.loading = false;
           swal('File uploaded successfully')
@@ -97,6 +97,7 @@ angular.module('steam')
           localStorageService.remove('currentObjPath')
         })
         .catch(function () {
+          $rootScope.loading = false;
           swal('Unable to upload your file')
         })
         $rootScope.loading = true;

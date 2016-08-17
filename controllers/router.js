@@ -52,21 +52,6 @@ angular.module('steam',
       }
     })
 
-    .state('workarea.test', {
-      url: '^/testing/:path',
-      requireLogin: true,
-      views: {
-        'options': {
-          templateUrl: '/views/options.html',
-          controller: 'optionsCtrl'
-        },
-        'uploadFile': {
-          templateUrl: '/views/uploadFile.html',
-          controller: 'uploadCtrl'
-        }
-      }
-    })
-
     .state('workarea.list', {
       url: '^/room/:path',
       requireLogin: true,
@@ -105,6 +90,36 @@ angular.module('steam',
         'comments': {
           templateUrl: '/views/comments.html',
           controller: 'commentsCtrl'
+        }
+      }
+    })
+
+    .state('workarea.fileupload', {
+      url: '^/upload/:path',
+      requireLogin: true,
+      views: {
+        'options': {
+          templateUrl: '/views/options.html',
+          controller: 'optionsCtrl'
+        },
+        'uploadFile': {
+          templateUrl: '/views/uploadFile.html',
+          controller: 'uploadCtrl'
+        }
+      }
+    })
+
+    .state('workarea.container', {
+      url: '^/container/:path',
+      requireLogin: true,
+      views: {
+        'options': {
+          templateUrl: '/views/options.html',
+          controller: 'optionsCtrl'
+        },
+        'createRoom': {
+          templateUrl: '/views/createcontainer.html',
+          controller: 'createContainerCtrl'
         }
       }
     })
