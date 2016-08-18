@@ -117,9 +117,24 @@ angular.module('steam',
           templateUrl: '/views/options.html',
           controller: 'optionsCtrl'
         },
-        'createRoom': {
+        'createContainer': {
           templateUrl: '/views/createcontainer.html',
           controller: 'createContainerCtrl'
+        }
+      }
+    })
+
+    .state('workarea.room', {
+      url: '^/createroom/:path',
+      requireLogin: true,
+      views: {
+        'options': {
+          templateUrl: '/views/options.html',
+          controller: 'optionsCtrl'
+        },
+        'createRoom': {
+          templateUrl: '/views/createroom.html',
+          controller: 'createRoomCtrl'
         }
       }
     })
