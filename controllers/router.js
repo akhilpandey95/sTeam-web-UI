@@ -139,6 +139,21 @@ angular.module('steam',
       }
     })
 
+    .state('workarea.emptydoc', {
+      url: '^/createdoc/:path',
+      requireLogin: true,
+      views: {
+        'options': {
+          templateUrl: '/views/options.html',
+          controller: 'optionsCtrl'
+        },
+        'createDoc': {
+          templateUrl: '/views/createdoc.html',
+          controller: 'createDocCtrl'
+        }
+      }
+    })
+
     $urlRouterProvider.otherwise('/room/')
   }])
 

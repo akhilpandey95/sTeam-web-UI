@@ -53,30 +53,37 @@ angular.module('steam')
     }
   }])
 
-  .controller('createDocCtrl', ['$scope', '$state', '$location', '$uibModalInstance', 'fileUpload', 'handler',
-    function ($scope, $state, $location, $uibModalInstance, fileUpload, handler) {
-      var uploadUrl = '/home/' + $scope.user + '/test'
-      var fileObj = {
-        class: "Document",
-        content: $scope.myfile,
-        name: "test"
-      }
-      $scope.submit = function () {
-        handler.put(uploadUrl, fileObj).then(function () {
-          $uibModalInstance.dismiss('cancel')
-          swal("created a document")
+  .controller('createDocCtrl', ['$rootScope', '$scope', '$location', 'localStorageService', 'handler',
+    function ($rootScope, $scope, $location, localStorageService, handler) {
+
+      $scope.submit = function (name) {
+        var uploadUrl = '/home/' + $scope.user + '/' + name
+        var docObj = {
+          class: "Document",
+          content: "",
+          name: name
+        }
+        handler.put(uploadUrl, docObj).then(function () {
+          $rootScope.loading = false;
+          swal("created an empty Document")
           location.href = '/'
           localStorageService.remove('currentObjPath')
         })
         .catch(function () {
-          $uibModalInstance.dismiss('cancel')
-          swal('Unable to create a document')
+          $rootScope.loading = false;
+          swal('Unable to create an empty Document')
           location.href = '/'
           localStorageService.remove('currentObjPath')
         })
+
+        $rootScope.loading = true;
       }
+
       $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
+        if (localStorageService.get('currentObjPath') != null) {
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
+        }
       }
   }])
 
