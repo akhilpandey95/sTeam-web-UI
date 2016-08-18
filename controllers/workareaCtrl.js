@@ -82,13 +82,14 @@ angular.module('steam')
 
   .controller('uploadCtrl', ['$rootScope', '$scope', '$location', 'localStorageService', 'handler',
     function ($rootScope, $scope, $location, localStorageService, handler) {
+
       $scope.docDetails = {}
-      $scope.submit = function (test) {
-        var uploadUrl = '/home/' + $scope.user + '/' + test
+      $scope.submit = function (name) {
+        var uploadUrl = '/home/' + $scope.user + '/' + name
         var fileObj = {
           class: "Document",
-          content: $scope.myfile,
-          name: test
+          content: $rootScope.myfile,
+          name: name
         }
         handler.put(uploadUrl, fileObj).then(function () {
           $rootScope.loading = false;
@@ -102,6 +103,7 @@ angular.module('steam')
         })
         $rootScope.loading = true;
       }
+
       $scope.cancel = function () {
         if (localStorageService.get('currentObjPath') != null) {
           location.href = '/'
@@ -137,29 +139,36 @@ angular.module('steam')
     }
   }])
 
-  .controller('createContainerCtrl', ['$scope', '$state', '$uibModalInstance', 'handler',
-    function ($scope, $state, $uibModalInstance, handler) {
-      var uploadUrl = '/home/' + $scope.user + '/test123'
-      var roomObj = {
-        class: "Container",
-        name: "test123",
-        description: "this is a container"
-      }
-      $scope.submit = function () {
+  .controller('createContainerCtrl', ['$rootScope', '$scope', '$location', 'localStorageService', 'handler',
+    function ($rootScope, $scope, $location, localStorageService, handler) {
+
+      $scope.submit = function (name, description) {
+        var uploadUrl = '/home/' + $scope.user + '/' + name
+        var roomObj = {
+          class: "Container",
+          name: name,
+          description: description
+        }
         handler.put(uploadUrl, roomObj).then(function () {
-          $uibModalInstance.dismiss('cancel')
+          $rootScope.loading = false;
           swal("created a container")
           location.href = '/'
           localStorageService.remove('currentObjPath')
         })
         .catch(function () {
-          $uibModalInstance.dismiss('cancel')
+          $rootScope.loading = false;
           swal('Unable to create a container')
           location.href = '/'
           localStorageService.remove('currentObjPath')
         })
+
+        $rootScope.loading = true;
       }
-    $scope.cancel = function () {
-      $uibModalInstance.dismiss('cancel');
-    }
+
+      $scope.cancel = function () {
+        if (localStorageService.get('currentObjPath') != null) {
+          location.href = '/'
+          localStorageService.remove('currentObjPath')
+        }
+      }
   }])
