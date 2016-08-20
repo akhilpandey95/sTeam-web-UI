@@ -83,17 +83,10 @@ angular.module('steam')
     })
   }
 
-  $scope.save = function () {
-    handler.get($scope.dataSrc, true).then(function (response) {
-      $scope.data = response
-      var doc = {
-        class: "Document",
-        content: $scope.data,
-        name: $scope.dataSrc.substr(41)
-      }
-      handler.put('/home/' + localStorageService.get('currentObjPath'), $scope.data).then(function () {
-        alert("Saved the doc")
-      })
+  $scope.save = function (data) {
+
+    handler.put($scope.dataSrc, data).then(function () {
+      swal("Saved the doc")
     })
     .catch(function () {
       alert("Couldn't save the document")
